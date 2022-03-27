@@ -1,0 +1,4 @@
+*.aux
+*.log
+*.notes
+*.ipynb_checkpoints
