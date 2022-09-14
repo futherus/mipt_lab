@@ -1,4 +1,5 @@
 *.aux
 *.log
-*.notes
 *.ipynb_checkpoints
+__pycache__
+__pycache__/*
