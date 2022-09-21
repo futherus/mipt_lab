@@ -5,7 +5,8 @@ import math
 import scipy as sp
 import scipy.optimize as op
 from scipy.interpolate import UnivariateSpline
-import copy 
+import copy
+import itertools
 
 def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
     '''
@@ -17,14 +18,14 @@ def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
     :param sheet_name: index or name of sheet to read
     '''
     if header == None or header == 0:
-        return pd.read_excel(filename, header = header, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
+        return pd.read_excel(filename, engine='odf', header = header, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
 
     # Read header rows
-    __header_df = pd.read_excel(filename, nrows = 0, header = header, sheet_name = sheet_name)
+    __header_df = pd.read_excel(filename, engine='odf', nrows = 0, header = header, sheet_name = sheet_name)
     __header_mi = pd.MultiIndex.from_tuples(__header_df.columns.to_list())
 
     # Read data and set multiindex
-    __data = pd.read_excel(filename, skiprows = header, header = None, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
+    __data = pd.read_excel(filename, engine='odf', skiprows = header, header = None, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
     __data.columns = __header_mi[usecols]
 
     return __data
@@ -52,23 +53,26 @@ def interp_linear(x, y):
     coeffs = np.polyfit(x, y, 1)
     return lambda x: coeffs[0] * x + coeffs[1]
 
+PLOT_MARKER = itertools.cycle(['.', '1', '2', '3', '4', '+', 'o', 'v', '^', '<', '>', '*'])
 def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
          begin = 0, end = None, exclude = [],
-         x_min = None, x_max = None, func = interp_linear):
+         x_min = None, x_max = None, func = interp_linear, unique_marker='.'):
     '''
     Creates plot with approximating line.
 
-    :param x:       x coordinates of points
-    :param y:       y coordinates of points
-    :param label:   label of plot in legend
-    :param color:   color of plot
-    :param xerr:    x errors of points
-    :param yerr:    y errors of points
-    :param begin:   index of first point used for approximating line
-    :param end:     index of last point used for approximating line
-    :param exclude: indices of 'error' points
-    :param x_min:   left end of approximating line
-    :param x_max:   right end of approximating line
+    :param x:                   x coordinates of points
+    :param y:                   y coordinates of points
+    :param label:               label of plot in legend
+    :param color:               color of plot
+    :param xerr:                x errors of points
+    :param yerr:                y errors of points
+    :param begin:               index of first point used for approximating line
+    :param end:                 index of last point used for approximating line
+    :param exclude:             indices of 'error' points
+    :param x_min:               left end of approximating line
+    :param x_max:               right end of approximating line
+    :param func:                function for approximating
+    :param unique_marker:       True -> use internal unique marker, otherwise use unique_marker as marker itself
 
     :return x_clean, y_clean: pd.Series of values used for approximating line
     '''
@@ -91,9 +95,12 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     equ = func(x_clean, y_clean)
     x_space = np.linspace(x_min, x_max, 100)
     
-    p = plt.plot(x_space, equ(x_space), label = label, c = color)
-    plt.errorbar(x, y, xerr = xerr, yerr = yerr, fmt = '.', c = p[-1].get_color())
+    if unique_marker == True:
+        unique_marker = PLOT_MARKER.next()
     
+    p = plt.plot(x_space, equ(x_space), label = label, c = color)
+    plt.errorbar(x, y, xerr = xerr, yerr = yerr, fmt = unique_marker, c = p[-1].get_color())
+
     for i in exclude:
         plt.scatter(x[i], y[i], s = 60, marker = 'x', c = 'red')
 
