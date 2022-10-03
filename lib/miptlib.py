@@ -8,6 +8,31 @@ from scipy.interpolate import UnivariateSpline
 import copy
 import itertools
 
+def excel_cols2nums(cols):
+    '''
+    Converts list of excel columns to list of corresponding indices.
+    Skips column if is already a number.
+
+    :param cols: columns names as strings
+    '''
+    indices = []
+
+    for col in cols:
+        num = 0
+        if type(col) == str:
+            for c in col:
+                num = num * 26 + (ord(c.upper()) - ord('A')) + 1
+            num -= 1
+        elif type(col) == int:
+            num = col
+        else:
+            print("Wrong type of column. Should be str or int")
+            num = col
+
+        indices.append(num)
+
+    return indices
+
 def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
     '''
     Creates pandas.DataFrame from excel file with pandas.MultiIndex.
@@ -17,6 +42,8 @@ def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
     :param header:     int list with indices of header rows
     :param sheet_name: index or name of sheet to read
     '''
+    usecols = excel_cols2nums(list(usecols))
+
     if header == None or header == 0:
         return pd.read_excel(filename, header = header, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
 
@@ -53,7 +80,7 @@ def interp_linear(x, y):
     coeffs = np.polyfit(x, y, 1)
     return lambda x: coeffs[0] * x + coeffs[1]
 
-PLOT_MARKER = itertools.cycle(['.', '1', '2', '3', '4', '+', 'o', 'v', '^', '<', '>', '*'])
+PLOT_MARKER = itertools.cycle(['.', 'v', '^', '<', '>', '*', 'o', '+', '1', '2', '3', '4'])
 def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
          begin = 0, end = None, exclude = [],
          x_min = None, x_max = None, marker_size = 6, func = interp_linear, unique_marker='.'):
@@ -71,7 +98,7 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     :param exclude:             indices of 'error' points
     :param x_min:               left end of approximating line
     :param x_max:               right end of approximating line
-    :param func:                function for approximating
+    :param func:                function for approximating, None -> no approximating line
     :param marker_size:         points size
     :param unique_marker:       True -> use internal unique marker, otherwise use unique_marker as marker itself
 
@@ -87,6 +114,8 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     for i in range(begin, end + 1):
         if i in exclude:
             continue
+        if np.isnan(x[i]) or np.isnan(y[i]):
+            continue
         x_clean.append(x[i])
         y_clean.append(y[i])
     
@@ -96,15 +125,19 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     x_space = np.linspace(x_min, x_max, 100)
     
     if unique_marker == True:
-        unique_marker = PLOT_MARKER.next()
+        unique_marker = next(PLOT_MARKER)
     
     equ = None
-    if (func != None):
+    p = None
+    # At least two points and function for approximating.
+    if (func != None and end - begin + 1 >= 2):
         equ = func(x_clean, y_clean)
         p = plt.plot(x_space, equ(x_space), label = label, c = color)
-        color = p[-1].get_color();
+    else:
+        p = plt.plot([], [], label = label, c = color)
 
-    plt.errorbar(x, y, ms = marker_size, xerr = xerr, yerr = yerr, fmt = unique_marker, c = color);
+    color = p[-1].get_color()
+    plt.errorbar(x, y, ms = marker_size, xerr = xerr, yerr = yerr, fmt = unique_marker, c = color)
 
     for i in exclude:
         plt.scatter(x[i], y[i], s = 60, marker = 'x', c = 'red')
