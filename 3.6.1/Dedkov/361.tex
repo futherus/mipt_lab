@@ -1,0 +1,296 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{floatrow}
+\usepackage{booktabs}
+%\usepackage{wrapfig}
+\usepackage{lipsum}
+%\usepackage{subcaption}
+\usepackage{fancyhdr}
+
+
+%multi-column
+%\multicolumn{number cols}{align}{text} % align: l,c,r
+
+%multi-row
+\usepackage{multirow}
+
+\newcommand{\figref}[1]{(См. рис. \ref{#1})}
+\newcommand{\secref}[1]{(См. раздел. \ref{#1})}
+
+\newcommand{\e}[1]{\text{$\cdot10^{#1}$}}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{Работа 2.3.1}
+\fancyhead[R]{}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\cot}{\text{ctg}}
+
+\author{\normalsize Выполнил: Дедков Денис, группа Б01-109 \\
+	\normalsize 01.10.2022}
+\date{}
+
+\usepackage{float}
+\restylefloat{table}
+\title{
+	\large Отчет о выполнении лабораторной работы 3.6.1 \\
+	\Large Спектральный анализ электрических сигналов \\ 
+	
+}
+
+\begin{document}
+\maketitle
+\subsection*{Цель работы} Изучить спектральный состав периодических электрических сигналов.
+
+\subsection*{Оборудование и приборы} Генератор сигналов специальной формы
+АКИП-3409/4, Цифровой осциллограф SIGLENT АКИП 4131/1.
+
+\subsection*{Введение}
+В работе изучается спектральный состав периодических электрических сигналов различной формы: последовательности прямоугольных
+импульсов, последовательности цугов и амплитудно-модулированных
+гармонических колебаний. Спектры этих сигналов наблюдаются с помощью анализатора спектра и сравниваются c рассчитанными теоретически.
+
+В последнее время повсеместное распространение получила цифровая обработка сигналов. Спектральный состав оцифрованного сигнала
+может быть найден численно. Существуют алгоритмы (быстрое преобразование Фурье, FFT), позволяющие проводить вычисления коэффициентов Фурье в реальном времени для сигналов относительно высокой
+частоты (до 200 МГц). Именно быстрое преобразование Фурье используется в данной работе для вычисления спектра.
+\newpage
+	
+\subsection*{Ход работы}
+\subsubsection*{ Исследование спектра периодической последовательности прямоугольных импульсов}
+Теоретическое описание спектра периодической последовательности прямоугольных импульсов приведено на рисунке \ref{res:impulse}.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.49\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"res/impulse"}
+		\caption{Периодическая последовательность импульсов и её спектр.}
+		\label{res:impulse}
+	\end{minipage}%
+	\begin{minipage}[b]{.49\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"res/impulse_spectrum"}
+		\label{res:impulse_spectrum}
+	\end{minipage}
+\end{figure}
+
+Настраиваем генератор на прямоугольные импульсы с частотой повторения $\nu_{\text{повт}} = 1 \text{кГц}$ (период $T = 1 \text{мс}$) и длительностью импульса $\tau = \frac{T}{20} = 50 \text{мкс}$. Фотографии экрана электронного осциллографа приведены на рисунках \ref{photo:impulse_nu} и \ref{photo:impulse_tau}. 
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse1"}
+	\end{minipage}%
+	\begin{minipage}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse2"}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse3"}
+		\label{photo:impulse_nu}
+		\caption{Изменения спектра при увеличении $\nu$}
+	\end{minipage}%
+	\begin{minipage}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse4"}
+	\end{minipage}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse5"}
+		\label{photo:impulse_tau}
+		\caption{Изменения спектра при увеличении $\tau$}
+	\end{minipage}%
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse6"}
+	\end{minipage}
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/impulse7"}
+	\end{minipage}
+\end{figure}
+
+При фиксированных параметрах $\nu_{\text{повт}} = 1 \text{кГц}$ и $\tau = 100 \text{мкс}$ измерим высоты (амплитуды) $a_n$ и частоты $\nu_n$ несколько первых гармоник спектра и сравним их значения с рассчитанными теоретически по следующей формуле:
+$$a_n = \frac{\sin{(\pi n \tau/T)}}{\pi n}$$
+
+Графики экспериментально измеренного спектра, а также теоретически рассчитанной огибающей приведен на рисунке \ref{fig:a9}.
+
+\noindent \begin{minipage}[B]{.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{"gen/fig-a9.pdf"}
+	\label{fig:a9}
+	\caption{Спектр и огибающая}
+\end{figure}
+\end{minipage}%
+\begin{minipage}[B]{.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{"photo/impulse5"}
+	\label{photo:impulse_tau}
+	\caption{Фотография экспериментального спектра}
+\end{figure}
+\end{minipage}
+
+Проводим измерения зависимости ширины спектра $\Delta\nu$ от времени
+импульса $\tau$ в диапазоне от $20$ до $200$ мкс при фиксированной $\nu_{\text{повт}}$ (ширина
+измеряется от центра спектра до первой нулевой гармоники). Строим график зависимости $\Delta\nu(\frac{1}{\tau})$ (см. рис. \ref{fig:a11}).
+
+\noindent \begin{minipage}[B]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.2\linewidth]{"gen/fig-a11.pdf"}
+		\label{fig:a11}
+		\caption{График зависимости $\Delta\nu(\frac{1}{\tau})$ }
+	\end{figure}
+\end{minipage}%
+\begin{minipage}[B]{.5\textwidth}
+	\begin{table}[H]
+		\footnotesize
+		\input{gen/tab-a11.tex}
+		\caption{Данные}
+		\label{tab:a11}
+	\end{table}
+\end{minipage}
+
+\begin{table}[H]
+	\footnotesize
+	\input{gen/tab-a11-mnk.tex}
+	\caption{Обработка МНК}
+	\label{tab:a11-mnk}
+\end{table}
+
+Погрешность эксперимента коррелирует с погрешностью коэффициента наклона. Следовательно, рассчитаем количественный критерий точности:
+
+$$\mathcal{C} \approx \frac{\Delta a}{a} \approx 0.5 \% $$
+
+
+\subsubsection*{Исследование спектра периодической последовательности цугов}
+
+Теоретическое описание спектра периодической последовательности цугов приведено на рисунке \ref{res:zug}.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.49\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"res/zug"}
+		\caption{Периодическая последовательность импульсов и её спектр.}
+		\label{res:zug}
+	\end{minipage}%
+	\begin{minipage}[b]{.49\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"res/zug_spectrum"}
+		\label{res:zug_spectrum}
+	\end{minipage}
+\end{figure}
+
+Cледуя техническому описанию, устанавливаем на генераторе режим
+подачи периодических импульсов синусоидальной формы. Частоту несущей
+устанавливаем $\nu_0 = 50 \text{кГц}$, период повторения $T = 1 \text{мс}$ ($\nu_{повт} = 1 \text{кГц}$), число периодов в одном импульсе $N = 5$ (длительность импульса $\tau = N/\nu_{0} = 100$ мкс).
+
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/zug1"}
+		\label{photo:zug}
+		\caption{Изменения спектра при уменьшении $\tau$}
+	\end{minipage}%
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/zug2"}
+	\end{minipage}%
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/zug3"}
+	\end{minipage}
+\end{figure}
+
+К сожалению нам не удалось добиться устойчивой картины на экране осциллографа. Скорее всего это связано с генератором импульсов. Из-за этого следующее изучение спектра становится близким к невозможному.
+	
+\subsubsection*{ Исследование спектра гармонических сигналов, модулированных по амплитуде}
+Теоретическое описание гармонического сигнала, модулированного по амплитуде приведено на рисунке \ref{res:am}.
+
+\begin{figure}[H]
+	\includegraphics[width=0.5\linewidth]{"res/am"}
+	\caption{Спектр гармонических сигналов, модулированных по амплитуде.}
+	\label{res:am}
+\end{figure}
+
+Настраиваем генератор на частоту несущей $\nu_{0} = 25 \text{кГц}$, частоту модуляции
+$\nu_{\text{мод}} = 1 \text{кГц}$ и глубину модуляции $m = 0.5$. Фотографии экрана электронного осциллографа приведены на рисунке \ref{photo:am}.	
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/am1"}
+		\label{photo:am}
+		\caption{Изменения спектра при увеличении $\nu_{0}$}
+	\end{minipage}%
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/am2"}
+	\end{minipage}%
+	\begin{minipage}[b]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{"photo/am3"}
+	\end{minipage}
+\end{figure}
+
+Меняя на генераторе глубину модуляции $m$ в диапазоне от $10\%$ до
+$100\%$, измерим отношение $\frac{a_{\text{бок}}}{a_{\text{осн}}}$ амплитуд боковой и основной спектральных линий. Строим график зависимости $\frac{a_{\text{бок}}}{a_{\text{осн}}}(m)$ (см. рис. \ref{fig:v21}).
+
+\noindent \begin{minipage}[B]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.1\linewidth]{"gen/fig-v21.pdf"}
+		\label{fig:v21}
+		\caption{График зависимости $\frac{a_{\text{бок}}}{a_{\text{осн}}}(m)$}
+	\end{figure}
+\end{minipage}%
+\begin{minipage}[B]{.5\textwidth}
+	\begin{table}[H]
+		\footnotesize
+		\input{gen/tab-v21.tex}
+		\caption{Данные}
+		\label{tab:v21}
+	\end{table}
+\end{minipage}
+
+\begin{table}[H]
+	\footnotesize
+	\input{gen/tab-v21-mnk.tex}
+	\caption{Обработка МНК}
+	\label{tab:v21-mnk}
+\end{table}
+
+Погрешность эксперимента коррелирует с погрешностью коэффициента наклона. Следовательно, рассчитаем количественный критерий точности:
+
+$$\mathcal{C} \approx \frac{\Delta a}{a} \approx 3 \% $$
+
+\subsection*{Вывод}
+
+В работе было проведено изучение спектрального состава различных периодических электрических сигналов. Примечательно, что эксперимент получается с очень хорошей точностью (относительная погрешность порядка нескольких процентов). 
+
+К сожалению во второй части работы нам так и не удалось добиться устойчивой картины на экране осциллографа. Скорее всего это связано с генератором импульсов.
+	
+\end{document}
