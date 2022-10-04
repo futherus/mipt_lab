@@ -292,7 +292,7 @@ def mnk(x, y, fmt = None, file = None, precision = 2):
         fmt = {
                 '<x>':    ['$\overline{x}$', '{:.' + str(precision) + 'e}'],
                 'sx':     ['$\sigma_x^2$',   '{:.' + str(precision) + 'e}'],
-                '<y>':    ['$\overline{y}$', '{:.' + str(precision) + 'f}'],
+                '<y>':    ['$\overline{y}$', '{:.' + str(precision) + 'e}'],
                 'sy':     ['$\sigma_y^2$',   '{:.' + str(precision) + 'e}'],
                 'rxy':    ['$r_{xy}$',       '{:.' + str(precision) + 'e}'],
                 'a':      ['$a$',            '{:.' + str(precision) + 'f}'],
