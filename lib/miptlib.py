@@ -136,8 +136,9 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     else:
         p = plt.plot([], [], label = label, c = color)
 
-    color = p[-1].get_color()
-    plt.errorbar(x, y, ms = marker_size, xerr = xerr, yerr = yerr, fmt = unique_marker, c = color)
+    plt.errorbar(x, y, xerr = xerr, yerr = yerr,
+                 ms = marker_size, fmt = unique_marker,
+                 c = p[-1].get_color())
 
     for i in exclude:
         plt.scatter(x[i], y[i], s = 60, marker = 'x', c = 'red')
