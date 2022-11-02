@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{extreport}
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\setlength{\parindent}{1.25cm} % Отступ красной строки
+\usepackage{listings} 
+\usepackage{caption}
+
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{lipsum}
+
+\usepackage[frak=esstix]{mathalpha} % красивый готический шрифт.
+
+\usepackage{graphicx} % Для того, чтобы вставлять картинки.
+\usepackage{wrapfig} % Картинка, обтекаемая текстом.
+\usepackage{amssymb}
+\usepackage{amsmath} % Чтобы вставлять обычный текст в формулу с помощью \text. Фигурная скобка в системе уравнений.
+
+\usepackage{multicol} % Для написания текста в несколько колонок
+
+\usepackage{setspace} % Для изменения межстрочного интервала внутри текста. \begin{spacing}{0.8}.
+
+\usepackage{float} % Чтобы была опция таблиц H, запрещающая им бегать по документу
+\restylefloat{table}
+
+\usepackage{gensymb} % Геометрические символы. (градусы \degree)..
+
+\usepackage[warn]{mathtext} % Русские символы в формулах. Нужно писать до пакета babel. Указывает, что в формулах используются символы кириллицы, которые по умолчанию печатаются прямым шрифтом.
+
+\usepackage[T2A]{fontenc} % Установить кодировку шрифта для отображения кириллицы в формулах.
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel} % Для переноса текста. Нельзя указывать одновременно russian и english, так как использует язык, который стоит правее.
+
+\usepackage{indentfirst} % Красная строка в первом абзаце.
+
+\usepackage{comment} % Для многострочный комментариев.
+
+%\DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it} % Сделать так, чтобы кириллица в формулах печаталась курсивом
+
+\linespread{1.25} % Межстрочный интервал. По умолчанию 1.0
+
+% Объявляем новую команду для переноса строки внутри ячейки таблицы
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand{\figref}[1]{(см. рис. \ref{#1})}
+\newcommand{\e}[1]{\text{$\cdot10^{#1}$}}
+\newcommand{\sigoper}{\hat{\Lambda}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\begin{document}
+	
+	\begin{center}
+		\large
+		\textsc{Лабораторная работа №3.5.1}
+		
+		\LARGE
+		\textbf{\textsc{Исследование плазмы газового разряда в неоне}}
+		\\[5mm]
+		
+		\large
+		Симанкович Александр\\
+		Маслов Артём\\
+		Б01-104
+		\\[3mm]
+		03.11.2022
+	\end{center}
+	
+	\input{annotation.tex}
+	
+	\input{introduction.tex}
+	
+	\input{theory.tex}
+	
+	\input{experimental scheme.tex}
+	
+	\input{equipment.tex}
+	
+	\input{measurements.tex}
+	
+	\input{results.tex}
+	
+\end{document}
