@@ -84,7 +84,7 @@ PLOT_MARKER = itertools.cycle(['.', 'v', '^', '<', '>', '*', 'o', '+', '1', '2',
 def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
          begin = 0, end = None, exclude = [],
          x_min = None, x_max = None, marker_size = 6,
-         linestyle = 'solid', func = interp_linear, unique_marker='.'):
+         linestyle = 'solid', linewidth = None, func = interp_linear, unique_marker='.'):
     '''
     Creates plot with approximating line.
 
@@ -133,9 +133,9 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
     # At least two points and function for approximating.
     if (func != None and end - begin + 1 >= 2):
         equ = func(x_clean, y_clean)
-        p = plt.plot(x_space, equ(x_space), label = label, c = color, linestyle = linestyle)
+        p = plt.plot(x_space, equ(x_space), label = label, c = color, linestyle = linestyle, linewidth = linewidth)
     else:
-        p = plt.plot([], [], label = label, c = color, linestyle = linestyle)
+        p = plt.plot([], [], label = label, c = color, linestyle = linestyle, linewidth = linewidth)
 
     plt.errorbar(x, y, xerr = xerr, yerr = yerr,
                  ms = marker_size, fmt = unique_marker,
