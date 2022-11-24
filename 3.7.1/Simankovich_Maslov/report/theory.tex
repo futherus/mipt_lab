@@ -129,9 +129,10 @@ $$
 H(x) = A e^{\alpha x} + B e^{-\alpha x}
 $$
 Решением дифференциального уравнения, удовлетворяющего данным начальным условиям будет
-$$
-H_1 = \frac{H_0}{\ch{ah} + \frac{1}{2} \alpha a \sh{\left( \alpha h \right)}}
-$$
+\begin{equation}
+	H_1 = \frac{H_0}{\ch{ah} + \frac{1}{2} \alpha a \sh{\left( \alpha h \right)}}
+	\label{eq:solution}
+\end{equation}
 где $\alpha = \sqrt{i \omega \sigma \mu_0} = \frac{1 + i}{\Lambda}$.
 
 Проанализируем предельные случаи.
@@ -140,7 +141,7 @@ $$
 	\centering
 	\includegraphics[width=0.7\textwidth]{../res/graphs.png}
 	\caption{Распределение амплитуды колебаний магнитного поля изображено пунктиром, мгновенное значение в некоторый момент времени -- сплошной линией. Слева случай низких частот $\Lambda \gg h$, справа случай высоких частот $\Lambda \ll h$.}
-	\label{fig:emi}
+	\label{fig:graphs}
 \end{figure}
 
 \begin{enumerate}
@@ -149,23 +150,29 @@ $$
 	H_1 \approx \frac{H_0}{1 + i \frac{ah}{\Lambda^2}}
 	$$
 	Тогда отношение модулей амплитуд будет равно:
-	$$
-	\frac{|H_1|}{|H_0|} = \frac{1}{\sqrt{1 + \left( \frac{ah}{\Lambda} \right)^2}} = \frac{1}{\sqrt{1 + \frac{1}{4} \left( a h \sigma \mu_0 \omega \right)^2}}
-	$$
-	Колебания $H_1$ отстают по фазе от $H_0$ на угол $\varphi = \arctan \left( \frac{ah}{\Lambda} \right)^2 $.
-	
+	\begin{equation}
+		\frac{|H_1|}{|H_0|} = \frac{1}{\sqrt{1 + \left( \frac{ah}{\Lambda} \right)^2}} = \frac{1}{\sqrt{1 + \frac{1}{4} \left( a h \sigma \mu_0 \omega \right)^2}}
+		\label{eq:low_ampl}
+	\end{equation}
+	Колебания $H_1$ отстают по фазе от $H_0$ на угол 
+	\begin{equation}
+		\psi = \arctan \left( \frac{ah}{\Lambda} \right)^2.
+		\label{eq:low_phase}
+	\end{equation}
+
 	\item Случай высоких частот $\Lambda \ll h$. Толщина скин слоя меньше толщины стенки, поэтому внутри цилиндра магнитное поле будет равно 0. $\alpha h \gg 1$, $\sh{\alpha h} \approx \ch{\alpha h} \approx \frac{1}{2} e^{\alpha h}$.
 	$$
 	\frac{H_1}{H_0} = \frac{4}{\alpha a} e^{- \alpha h} = \frac{2\sqrt{2}\Lambda}{a} e^{-\frac{h}{\Lambda}} e^{-i \left( \frac{\pi}{4} + \frac{h}{\Lambda}\right)}
 	$$
 	Тогда отношение модулей амплитуд будет равно:
-	$$
-	\frac{|H_1|}{|H_0|} = \frac{2\sqrt{2}\Lambda}{a} e^{-\frac{h}{\Lambda}}
-	$$
+	\begin{equation}
+		\frac{|H_1|}{|H_0|} = \frac{2\sqrt{2}\Lambda}{a} e^{-\frac{h}{\Lambda}}
+		\label{eq:high_ampl}
+	\end{equation}
 	Колебания $H_1$ отстают по фазе от $H_0$ на угол 
 	\begin{equation}
-		\varphi = \frac{\pi}{4} + \frac{h}{\Lambda}
-		\label{formula:delta_phi}
+		\psi = \frac{\pi}{4} + \frac{h}{\Lambda}
+		\label{eq:high_phase}
 	\end{equation}
 \end{enumerate}
 

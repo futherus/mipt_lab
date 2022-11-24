@@ -1,4 +1,90 @@
 \section*{Экспериментальные результаты}
 
+Оценим значение частоты $nu_h$, при котором скиновая длина равна толщине стенок экрана $h = 1.5$ мм, приняв значение проводимости медного экрана $\sigma = 5 \cdot 10^7 \; \text{См}/\text{м}$.
+$$ \nu_h = \frac{1}{\pi \sigma \mu_0 h^2} = 2250 \; \text{Гц}. $$ 
 
+Исследование полей проведем в трех диапазонах частот $\nu$: низкие ($0.01 \nu_h \div 0.05 \nu_h$), средние ($0.05 \nu_h \div 0.5 \nu_h$) и высокие ($0.5 \nu_h \div 15 \nu_h$).
 
+\subsection*{Низкие частоты}
+
+Согласно $\ref{eq:UInu}$ соотношение между полем внутри $H_1$ и полем снаружи $H_0$ зависит от тока в катушке и напряжения на вольтметре. Введем обозначения $\xi = \frac{U}{\nu I}$ и $\xi_0: \xi = \xi_0 \cdot \frac{H_1}{H_0}$. 
+
+При малых частотах толщина скин-слоя больше толщины стенок экрана, выполняется приближение \ref{eq:low_ampl}. Тогда
+$$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_0}\right)^2.$$
+
+Построим график $\frac{1}{\xi^2}(\nu^2)$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/xi-2_nu2.pdf}
+	\caption{Зависимость $\frac{1}{\xi^2}$ от частоты тока $\nu^2$}
+	\label{fig:xi-2_nu2}
+\end{figure}
+
+Найдем параметры графика $y = kx + b$ по методу наименьших квадратов. По ним определим $\xi_0 = 0.0154$ и проводимость фильтра $\sigma = \frac{\sqrt{k} \xi_0}{a h \mu_0 \pi} = 2.17 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+
+\subsection*{Средние частоты}
+
+Для данного диапазона частот мы можем определить сдвиг фаз между $U$ и $I$, определяемый \ref{eq:low_phase}. 
+
+Построим график $\tan \psi (\nu)$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/tanpsi_nu.pdf}
+	\caption{Зависимость $\tan \psi$ от частоты тока $\nu$}
+	\label{fig:tanpsi_nu}
+\end{figure}
+
+Линейность зависимости быстро исчезает, однако этого достаточно для еще одной оценки проводимости $\sigma = \frac{k}{a h \mu_0 \pi} = 2.41 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+
+\subsection*{Высокие частоты}
+
+Для данного диапазона выполняется приближение \ref{eq:high_phase}.
+
+Построим график $(\psi - \frac{\pi}{4}) (\frac{1}{\sqrt{\nu}})$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/psi_nu.pdf}
+	\caption{Зависимость $\psi - \frac{\pi}{4}$ от частоты тока $\sqrt{\nu}$}
+	\label{fig:psi_nu}
+\end{figure}
+
+Оценим проводимость $\sigma = \frac{k^2}{h^2 \mu_0 \pi}= 3.91 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+Значение проводимости в данной серии измерений значительно отличается от остальных $\sigma$.
+
+\subsection*{Индуктивность}
+
+Измерим индуктивность фильтра с помощью RLC-метра. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/L_nu.pdf}
+	\caption{Зависимость $L$ от частоты тока $\nu$}
+	\label{fig:L_nu}
+\end{figure}
+
+Согласно \ref{eq:LL_nu^2} построим линеаризованный график.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/psi_nu.pdf}
+	\caption{Зависимость $(L_{max} - L_{min})/(L - L_{min})$ от частоты тока $\nu^2$}
+	\label{fig:LL_nu^2}
+\end{figure}
+
+Определим проводимость $\sigma = \frac{\sqrt{k}}{a h \mu_0 \pi} = 1.99 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+
+\subsection*{Общие результаты}
+
+Сведем результаты в один график. Для этого построим экспериментальный график по всем значениям, собранным в работе, а также построим теоретические графики по \ref{eq:solution} для измеренных $\sigma$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../gen/summary.pdf}
+	\caption{Зависимость $(L_{max} - L_{min})/(L - L_{min})$ от частоты тока $\nu^2$}
+	\label{fig:summary}
+\end{figure}
+
+Как можно видеть, экспериментальные точки хорошо сходятся с теоретическими кривыми для $\sigma \approx 2 \cdot 10^7  \; \frac{\text{См}}{\text{м}}$.
