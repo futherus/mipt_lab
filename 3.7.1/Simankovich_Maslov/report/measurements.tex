@@ -16,12 +16,12 @@ $$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/xi-2_nu2.pdf}
+	\includegraphics[width=0.7\linewidth]{../gen/xi-2_nu2.pdf}
 	\caption{Зависимость $\frac{1}{\xi^2}$ от частоты тока $\nu^2$}
 	\label{fig:xi-2_nu2}
 \end{figure}
 
-Найдем параметры графика $y = kx + b$ по методу наименьших квадратов. По ним определим $\xi_0 = 0.0154$ и проводимость фильтра $\sigma = \frac{\sqrt{k} \xi_0}{a h \mu_0 \pi} = 2.17 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+Найдем параметры графика $y = kx + b$ по методу наименьших квадратов. По ним определим $\xi_0 = 0.0154$ и проводимость фильтра $\sigma = \frac{\sqrt{k} \xi_0}{a h \mu_0 \pi} = 4.35 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
 
 \subsection*{Средние частоты}
 
@@ -31,12 +31,12 @@ $$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/tanpsi_nu.pdf}
+	\includegraphics[width=0.7\linewidth]{../gen/tanpsi_nu.pdf}
 	\caption{Зависимость $\tan \psi$ от частоты тока $\nu$}
 	\label{fig:tanpsi_nu}
 \end{figure}
 
-Линейность зависимости быстро исчезает, однако этого достаточно для еще одной оценки проводимости $\sigma = \frac{k}{a h \mu_0 \pi} = 2.41 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+Линейность зависимости быстро исчезает, однако этого достаточно для еще одной оценки проводимости $\sigma = \frac{k}{a h \mu_0 \pi} = 4.83 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
 
 \subsection*{Высокие частоты}
 
@@ -46,7 +46,7 @@ $$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/psi_nu.pdf}
+	\includegraphics[width=0.7\linewidth]{../gen/psi_nu.pdf}
 	\caption{Зависимость $\psi - \frac{\pi}{4}$ от частоты тока $\sqrt{\nu}$}
 	\label{fig:psi_nu}
 \end{figure}
@@ -56,25 +56,31 @@ $$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_
 
 \subsection*{Индуктивность}
 
+Также скин-эффект влияет на индуктивность соленоида с медным цилиндром внутри $L$. Из-за скин-эффекта магнитное поле не проникает внутрь соленоида, поэтому уменьшается индуктивность $L$.
+
 Измерим индуктивность фильтра с помощью RLC-метра. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/L_nu.pdf}
+	\includegraphics[width=0.7\linewidth]{../gen/L_nu.pdf}
 	\caption{Зависимость $L$ от частоты тока $\nu$}
 	\label{fig:L_nu}
 \end{figure}
 
-Согласно (\ref{eq:LL_nu^2}) построим линеаризованный график.
+Для индуктивности будет выполняться следующее соотношение:
+
+$$\frac{L_{max} - L}{L - L_{min}} = (\pi a h \mu_0 \sigma \nu)^2.$$
+
+Построим линеаризованный график.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/psi_nu.pdf}
+	\includegraphics[width=0.7\linewidth]{../gen/LL_nu2.pdf}
 	\caption{Зависимость $(L_{max} - L_{min})/(L - L_{min})$ от частоты тока $\nu^2$}
 	\label{fig:LL_nu^2}
 \end{figure}
 
-Определим проводимость $\sigma = \frac{\sqrt{k}}{a h \mu_0 \pi} = 1.99 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
+Определим проводимость $\sigma = \frac{\sqrt{k}}{a h \mu_0 \pi} = 3.98 \cdot 10^7 \; \frac{\text{См}}{\text{м}}$.
 
 \subsection*{Общие результаты}
 
@@ -82,9 +88,9 @@ $$\frac{1}{\xi^2} = \frac{1}{\xi_0^2} + \left(\frac{ah\mu_0 \sigma \pi \nu}{\xi_
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../gen/summary.pdf}
-	\caption{Зависимость $(L_{max} - L_{min})/(L - L_{min})$ от частоты тока $\nu^2$}
+	\includegraphics[width=0.7\linewidth]{../gen/summary.pdf}
+	\caption{Зависимость $\frac{|H_1|}{|H_0|}$ от частоты тока $\nu$}
 	\label{fig:summary}
 \end{figure}
 
-Как можно видеть, экспериментальные точки хорошо сходятся с теоретическими кривыми для $\sigma \approx 2 \cdot 10^7  \; \frac{\text{См}}{\text{м}}$.
+Как можно видеть, экспериментальные точки хорошо сходятся с теоретическими кривыми для различных $\sigma$.
