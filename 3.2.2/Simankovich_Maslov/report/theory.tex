@@ -169,23 +169,94 @@ $$
 $$
 Решением неоднородного дифференциального уравнения будет сумма однородного и частного решений
 $$
-U(t)_{общ} = U(t)_{одн} + U(t)_{част}
+U_{общ}(t) = U_{одн}(t) + U_{част}(t)
 $$
-%TODO: однородное + частное
-Однородным решением будут затухающие колебания
+Решением однородного уравнения будут затухающие колебания
 $$
-U(t)_{одн} = U_0 e^{-\gamma t} sin(\omega t + \varphi_0)
+U_{одн}(t) = U_0 e^{-\gamma t} sin(\omega t + \varphi_0)
 $$
-Найдем частное решение неоднородного уравнения.
+Частное решение неоднородного уравнения будем искать в виде:
+$$
+U_{част}(t) = A e^{j \omega t}
+$$
+Неоднородность уравнения в комплексной форме равна
+$$
+\varepsilon = \frac{\varepsilon_0}{LC}e^{j \omega t}
+$$
+Подставив частное решение в исходное уравнение находим
+$$
+U_{част}(t) = \frac{\varepsilon_0 e^{j \omega t}}{LC (\omega_0^2 + 2 j \gamma \omega  - \omega^2)}
+$$
+Решением является только действительная часть, тогда
+$$
+U_{част}(t) = \frac{\varepsilon_0}{LC} \frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4 \omega^2 \gamma^2 }} \cos{\left(\omega t - \arctg{\frac{2 \omega \gamma}{\omega_0^2 - \omega^2}}\right)}
+$$
+Итого уравнением вынужденных колебаний будет
+$$
+U(t) = U_0 e^{-\gamma t} sin(\omega t + \varphi_0) +  \frac{\varepsilon_0}{LC} \frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4 \omega^2 \gamma^2 }} \cos{\left(\omega t - \arctg{\frac{2 \omega \gamma}{\omega_0^2 - \omega^2}}\right)}
+$$
+Заметим, что амплитуда однородного решения убывает экспоненциально, а амплитуда частного решения остается постоянной. Поэтому, через большой промежуток времени, напряжение будет изменяться по закону $U(t) \approx U_{част}(t)$. Итого, установившимися вынужденными колебаниями будут гармонические колебания с частотой вынуждающей ЭДС.
 
-Поэтому, через большой промежуток времени, напряжение будет изменяться по закону $U(t)_{}$
+\subsection*{Резонанс в параллельном колебательном контуре}
 
-\subsection*{Метод комплексных амплитуд}
+Рассмотрим параллельный колебательный контур. Пусть к нему подключен идеальный источник ЭДС, обладающий бесконечно большим внутренним сопротивлением, задающий во внешней цепи ток, изменяющийся по гармоническому закону $I = I_0 \cos{\left(\omega t + \phi_0\right)}$.
 
-\subsection*{Метод векторных диаграмм}
+\begin{figure}[H]
+	\vspace{-10pt}
+	\centering
+	\includegraphics[width=0.4\textwidth]{../res/parallel_contour.png}
+	\caption{Параллельный колебательный контур}
+	\label{fig:parallel_contour}
+\end{figure}
 
-\subsection*{Мощность колебательной системы}
+Методом комплексных амплитуд определим зависимости напряжения и тока на элементах цепи:
+\begin{equation*}
+	\begin{split}
+		I_C &= I_0 \frac{1 + j \frac{\rho \omega}{R \omega_0}}{1 + j \frac{\rho}{R} \left( \frac{\omega}{\omega_0} - \frac{\omega_0}{\omega} \right) } \\
+		I_L &= I_0 \frac{-j \frac{\rho \omega_0}{R \omega}}{1 + j \frac{\rho}{R}\left(\frac{\omega}{\omega_0} - \frac{\omega_0}{\omega}\right)} \\
+		U_C &= I_0 \frac{\rho^2}{R} \frac{1-j \frac{\rho \omega_0}{R \omega}}{1 + j \frac{\rho}{R}\left(\frac{\omega}{\omega_0} - \frac{\omega_0}{\omega}\right)}
+	\end{split}
+\end{equation*}
 
-\subsection*{Резонанс в колебательном контуре}
+Далее будем рассматривать высокодобротный колебательный контур вблизи резонансной частоты $Q \approx \frac{\rho}{R} \gg 1$. Тогда выражения для токов примут вид:
+\begin{equation*}
+	\begin{split}
+		I_C &= Q I_0 \frac{\omega}{\omega_0} \frac{ \cos \left( \omega t - \varphi_C \right) }{ \sqrt{1 + (\tau \Delta \omega)^2} } \\
+		I_L &= Q I_0 \frac{\omega_0}{\omega} \frac{ \cos \left( \omega t - \varphi_L \right) }{ \sqrt{1 + (\tau \Delta \omega)^2} } \\
+		U_C &= Q \rho I_0 \frac{ \cos \left( \omega t - \varphi_U \right) }{ \sqrt{1 + (\tau \Delta \omega)^2} }		
+	\end{split}
+\end{equation*}
+Фазы токов определяются по формулам:
+\begin{equation*}
+	\begin{split}
+		\varphi_C &= \arctg{\left(\tau \Delta \omega\right)} - \frac{\pi}{2} + \frac{1}{Q} \\
+		\varphi_L &= \arctg{\left(\tau \Delta \omega\right)} + \frac{\pi}{2} \\
+		\varphi_U &= \arctg{\left(\tau \Delta \omega\right)} + \frac{\omega_0}{\omega} \frac{1}{Q} \\
+	\end{split}
+\end{equation*}
 
-%TODO: ФЧХ, АЧХ
+При резонансе $\omega = \omega_0$, $\Delta \omega = 0$ и формулы можно упростить:
+\begin{equation*}
+	\begin{split}
+		I_C &= Q I_0 \cos \left( \omega_0 t - \varphi_C \right) \\
+		I_L &= Q I_0 \cos \left( \omega_0 t - \varphi_L \right) \\
+		U_C &= Q^2 R I_0 \cos \left( \omega_0 t - \varphi_U \right) \\		
+		\varphi_C &= -\frac{\pi}{2} + \frac{1}{Q} \\
+		\varphi_L &= \frac{\pi}{2} \\
+		\varphi_U &= \frac{1}{Q} \\
+	\end{split}
+\end{equation*}
+
+Из полученных соотношений следует, что ток через конденсатор $I_C$ опережает внешний ток по фазе на $\frac{\pi}{2} - \frac{1}{Q} \approx \frac{\pi}{2}$. Ток через катушку индуктивности отстает от внешнего тока по фазе на $\frac{\pi}{2}$. Напряжение на конденсаторе отстает от внешнего тока по фазе на $\frac{1}{Q}$.
+
+Ток через индуктивность и конденсатор в $Q$ раз больше внешнего тока. Поэтому резонанс в последовательном колебательном контуре называют \textit{резонансном токов}.
+
+С помощью полученных соотношений не трудно построить векторную диаграмму.
+
+\begin{figure}[H]
+	\vspace{-10pt}
+	\centering
+	\includegraphics[width=0.4\textwidth]{../res/vect_diagram.png}
+	\caption{Векторная диаграмма при резонансе токов}
+	\label{fig:vect_diagram}
+\end{figure}
