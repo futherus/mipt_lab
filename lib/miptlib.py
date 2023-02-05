@@ -8,6 +8,36 @@ from scipy.interpolate import UnivariateSpline
 import copy
 import itertools
 
+def errcalc(func, at, delta):
+    '''
+    Calculate error using boundary method.
+
+    :param func: function of n-arguments
+    :param at: point to calculate error
+    :param delta: errors of arguments
+
+    Example:
+        
+        def func(x):
+            return x[1]**2 + x[0]
+
+        err, grad = errcalc(func, [1, 1], [0.1, 0.1])
+    '''
+    __at = np.column_stack(at)
+    __delta = np.column_stack(delta)
+    
+
+    assert __delta.shape[1] == __at.shape[1], 'Errors and point must have the same length'
+    __dim = __delta.shape[1]
+    
+    __delta = np.eye(__dim) * __delta[:, np.newaxis, :]
+    __at = np.ones((__dim, __dim)) * __at[:, np.newaxis, :]
+    
+    __gradient = (np.apply_along_axis(func, 2, __at + __delta) - \
+                  np.apply_along_axis(func, 2, __at - __delta)) / 2
+
+    return np.apply_along_axis(np.linalg.norm, 1, __gradient), __gradient
+
 def excel_cols2nums(cols):
     '''
     Converts list of excel columns to list of corresponding indices.
