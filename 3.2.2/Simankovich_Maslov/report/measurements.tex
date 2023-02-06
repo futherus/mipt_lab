@@ -1,71 +1,74 @@
 \section*{Экспериментальные результаты}
 
-Для контуров с различными ёмкостями $C_n$, меняя их с помощью переключателя на блоке, измерим резонансные частоты $f_0$ и напряжения $U_C$ при установленном в напряжении $\mathscr{E}$ на выходе генератора. Для каждого значения $C_n$ по данным эксперимента проведем расчёт параметров стенда (см. таблицу \ref{tab:params}).
+Для контуров с различными ёмкостями $C_n$, меняя их с помощью переключателя на блоке, измерим резонансные частоты $f_0$ и напряжения $U_C$ при установленном в напряжении $\mathscr{E}$ на выходе генератора. Для каждого значения $C_n$ по данным эксперимента проведем расчёт параметров стенда.
 
-Рассчитаем средние значения $L$ и $R_L$ и их случайные погрешности для использования в дальнейшем (см. таблицу \ref{tab:RL}).
+Рассчитаем средние значения $L$ и $R_L$ и их погрешности для использования в дальнейшем (см. таблицу \ref{tab:RL}).
+
+%\begin{table}[H]
+%	\centering
+%	\footnotesize
+%	\input{../gen/setup-1.tex}
+%	\caption{Параметры контура}
+%	\label{tab:params}
+%\end{table}
 
 \begin{table}[H]
 	\centering
 	\footnotesize
-	\input{../gen/setup-1.tex}
-	\caption{Параметры контура}
-	\label{tab:params}
-\end{table}
 
-\begin{table}[H]
-	\centering
-	\footnotesize
 	\input{../gen/setup-mean-1.tex}
-	\caption{Погрешности параметров}
+	
+	\input{../gen/setup-mean-2.tex}
+	
+	\input{../gen/setup-mean-3.tex}
+	
+	\caption{Параметры катушки по трем сериям измерений}
 	\label{tab:RL}
 \end{table}
+
+Для контуров с двумя разными ёмкостями измерим амплитудно-частотные $U_C(f)$ и  фазово-частотные $\varphi(f)$ характеристики.
 
 Построим графики амплитудно-частотные характеристик $U_C(f)$ для выбранных контуров (см. рис. \ref{fig:resonance}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale = 0.8]{../gen/fig-resonance.pdf}
-	\caption{Графики амплитудно-частотные характеристик}
+	\caption{Графики АЧХ}
 	\label{fig:resonance}
 \end{figure}
 
-\clearpage
-
-Для контуров с двумя разными ёмкостями измерим амплитудно-частотные $U_C(f)$ и  фазово-частотные $\varphi(f)$ характеристики (см. таблицу \ref{tab:norm}).
-
-
-Построим на одном графике амплитудно-частотные характеристики в безразмерных координатах $x = \frac{f}{f_0}$, $y = \frac{U_C}{U_C(f_0)}$. По ширине резонансных кривых на уровне 0,707
+Построим на одном графике амплитудно-частотные характеристики в безразмерных координатах $x = \frac{f}{f_0}$, $y = \frac{U_C}{U_C(f_0)}$. По ширине резонансных кривых на уровне $1 / \sqrt{2}$
 определим добротности $\mathcal{Q}$ соответствующих контуров:
 
-$$\mathcal{Q}\left(33.2 \text{ нФ}\right) = 22.6 \pm 0.5$$
-$$\mathcal{Q}\left(68 \text{ нФ}\right) = 16.6 \pm 0.3$$
+$$\mathcal{Q}\left(33.2 \text{ нФ}\right) = 21.3 \pm 0.4$$
+$$\mathcal{Q}\left(67.4 \text{ нФ}\right) = 16.0 \pm 0.3$$
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.8]{../gen/fig-resonance-norm.pdf}
-	\caption{Графики амплитудно-частотные характеристик в нормированных координатах}
+	\caption{Графики нормированных АЧХ}
 	\label{fig:norm}
 \end{figure}
 
 
 Построим на одном графике фазово-частотные характеристики в безразмерных координатах $x = \frac{f}{f_0}$, $y = \frac{\varphi}{\pi}$. По этим характеристикам определим добротности контуров по расстоянию между точками по оси $x$, в которых $y$ меняется от $1/4$ до $3/4$:
 
-$$\mathcal{Q}\left(33.2 \text{ нФ}\right) = 20.7 \pm 0.4$$
-$$\mathcal{Q}\left(68 \text{ нФ}\right) = 14.5 \pm 0.2$$
+$$\mathcal{Q}\left(33.2 \text{ нФ}\right) = 19.3 \pm 0.5$$
+$$\mathcal{Q}\left(67.4 \text{ нФ}\right) = 14.5 \pm 0.3$$
 
 
-\begin{table}[H]
-	\centering
-	\footnotesize
-	\caption{Погрешности параметров}
-	\input{../gen/measure.tex}
-	\label{tab:norm}
-\end{table}
+%\begin{table}[H]
+%	\centering
+%	\footnotesize
+%	\caption{Погрешности параметров}
+%	\input{../gen/measure.tex}
+%	\label{tab:norm}
+%\end{table}
 
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.8]{../gen/fig-phase.pdf}
-	\caption{Пробная катушка и ее положение относительно магнита}
+	\caption{Графики нормированных ФЧХ}
 \end{figure}
