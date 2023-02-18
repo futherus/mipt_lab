@@ -22,7 +22,7 @@
 \date{2021}
 
 \title[About Beamer] %optional
-{Diffraction of light by ultrasonic waves}
+{Diffraction of light by ultrasonic waves \\ (Debye-Sears effect)}
 
 %\subtitle{A short story}
 
@@ -45,20 +45,14 @@
 	
 	\begin{frame}
 		\frametitle{Abstract}
-		Acoustic waves in liquids cause density changes with spacing determined by the
-		frequency and the speed of the sound wave.
+		Article describes diffraction of light by ultrasonic waves in water. Theory of diffraction by ultrasonic waves is formulated. Speed of sound is evaluated using interference pattern and dark-field method. Bulk modulus of water is estimated.
 		
-			
-		TODO TODO
-		To determine the speed of sound in various liquids at room temperature
-		To determine the compressibility of the given liquids
-
 	\end{frame}
 	
 		\begin{frame}[plain,c]
 		
 		\begin{center}
-			\huge \usebeamercolor[fg]{frametitle} Introduction
+			\huge \usebeamercolor[fg]{frametitle} Introduction and Theory
 		\end{center}
 		
 	\end{frame}
@@ -67,38 +61,39 @@
 	\begin{frame}
 		\frametitle{Diffraction on periodic structures}
 		
-		TODO: CENTERING
-		
-		\includegraphics[width=4cm]{res/periodic.png}
-		\includegraphics[width=4cm]{res/diffraction_general.png}
+		\begin{figure}
+			\centering
+			\includegraphics[width=4cm]{res/periodic.png}
+			\includegraphics[width=4cm]{res/diffraction_general.png}
+			\caption{Example of diffraction}
+		\end{figure}
 		
 		
 		General theory shows that when a plane light wave is normally incident on the grating, the diffracted light has maximum at diffraction angles:
 
-		$$d \sin{\psi_m} = m \lambda,\; (m = 1, 2, ...)$$
+		$$d \sin{\theta_m} = m \lambda,\; (m = 1, 2, ...)$$
 		
-		$<WAT>$
-		However, especially the methods of obtaining such structures that are of practical interest.
-
-		$<\backslash WAT>$
 	\end{frame}
 
 
 	\begin{frame}
 		\frametitle{Diffraction by ultrasonic waves}
 		
-		TODO: CENTERING
-		
-		\includegraphics[width=4cm]{res/acoustic_grating.png}
-		\includegraphics[width=4cm]{res/n_x.png}
-		
+ 		\begin{figure}
+			\centering
+			\includegraphics[width=4cm]{res/acoustic_grating.png}
+			\includegraphics[width=4cm]{res/n_x.png}
+			\vspace{-10pt}
+			\caption{Characteristic picture of phase grating}
+		\end{figure}
 		One example of such system is \textbf{ultrasonic waves grating}. 
 		Acoustic waves in liquids cause density changes with spacing determined by the
 		frequency and the speed of the sound wave.
-		Local changes in the water density lead to a change in the refractive index $n \approx n_0 (1 + \cos{\frac{2\pi}{\Lambda}x})$, where $\Lambda$ - ultrasonic wavelength.
-		
+		Local changes in the water density lead to a change in the refractive index $n \approx n_0 (1 + a\cos{\frac{2\pi}{\Lambda}x})$, where $\Lambda$ - ultrasonic wave length.
+	
 		This forms a \textbf{phase diffraction grating}:
 		
+		\vspace{-8pt}
 		\begin{equation}
 			\varphi(x) = knL = \varphi_0 (1 + a \cos{\frac{2\pi}{\Lambda}x}).
 			\label{eq:diffraction}
@@ -109,7 +104,7 @@
 	\begin{frame}
 		\frametitle{Velocity of the ultrasonic wave}
 		
-		If $\nu$ is the frequency of the $<WAT>$ crystal $<\backslash WAT>$, the velocity $v$ of ultrasonic wave in the
+		If $\nu$ is the frequency of the ultrasonic wave, it's speed $v$ in the
 		liquid is given by:
 		\begin{equation}
 			v = \nu \Lambda.
@@ -118,7 +113,13 @@
 		
 		Thus, by measuring the angle of diffraction $\theta_n$, the order of diffraction $n$, the
 		light wavelength, the length of ultrasonic wave in the liquid can be determined
-		and then, knowing the frequency of sound wave, its velocity $v$ can be obtained. 
+		and then, knowing the frequency of sound wave, its speed $v$ can be obtained.
+		
+		Also we can deduce bulk modulus $K = \frac{\Delta P}{\Delta V / V}$:
+		\begin{equation}
+			K = \rho v^2.
+			\label{eq:k}
+		\end{equation}
 	\end{frame}
 
 	\begin{frame}
@@ -128,14 +129,14 @@
 				$$t(x) = e^{i\varphi(x)},$$ with intensity
 				$$I(x) = |f_0(x)|^2 = 1.$$
 				
-				$<WAT>$By the way$<\backslash WAT>$, there are some methods that allow you to observe the spatial structure.
+				However, a few methods exist that allow you to observe the spatial structure.
 
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Dark-field method}
 		
-		One of the most popular methods is called \textbf{dark-field method}. The idea behind is filtering the central maximum with using the screen, we get:
+		One of the most popular methods is called \textbf{dark-field method}. The idea behind is filtering the central maximum with small screen. After filtering we get:
 		
 		\begin{equation*}
 				f_0(x) = e^{i m \cos{\Omega x}} \approx 1 +  i m \cos{\Omega x} \overset{\textbf{filtering}}{=}  i m \cos{\Omega x}.
@@ -148,7 +149,6 @@
 		\end{equation*}
 		$\cos{2 \Omega x}$ implies that distance between interference lines is half of grating period.
 	
-		Another methods, such as \textbf{phase constrast method}, is based on the transition from a phase grating to an amplitude one.
 	\end{frame}
 
 	\begin{frame}
@@ -184,6 +184,8 @@
 		If $\Delta z = \frac{\pi}{2} + 2\pi n$, then the central wave $E_0$ has been rotated by $\frac{\pi}{2}$ and phase-amplitude transition has been occurred.
 	\end{frame}
 
+
+
 	\begin{frame}[plain,c]
 		
 		\begin{center}
@@ -192,11 +194,14 @@
 		
 	\end{frame}
 
+
+
 	\begin{frame}
 		\frametitle{Experimental Setup}
 		\begin{figure}
 			\centering
 			\includegraphics[width=0.8\linewidth]{res/real_setup.png}
+			\caption{Photo of laboratory setup}
 		\end{figure}
 		
 		\begin{itemize}
@@ -260,7 +265,7 @@
 
 		Using screw on cuvette we can change it's length. We setup generator frequency to achive well-recognizable interference pattern ($\nu = 1.16$ MHz). In that case wave becomes standing. Taking into account that changing cuvette length to $\Lambda / 2$ again gives us standing wave, we estimate: 
 		
-		$$ \Lambda / 2 = 700 \; \text{mkm} \Rightarrow v = \Lambda \nu = 1600 \;\text{m/s}.$$
+		$$ \Lambda / 2 = (700 \pm 70)\; \text{mkm} \Rightarrow v = \Lambda \nu = (1600 \pm 160) \;\text{m/s}.$$
 		
 	\end{frame}
 
@@ -319,7 +324,7 @@
 			\caption{Calibration ruler in microscope}
 		\end{figure}
 	
-		To determine distance between interference lines we calibrate microscope scale using glass with millimeter notches. Scale coefficient $\gamma = 0.6$ mm/div.
+		To determine distance between interference lines we calibrate microscope scale using glass with millimeter notches. Scale coefficient $\gamma = (0.60 \pm 0.05)$ mm/div.
 		
 	\end{frame}
 	
@@ -361,15 +366,53 @@
 			$$ v = (1574 \;\pm \; 12) \; \text{m/s}. $$
 			
 		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Amplitude grating}
+
+		\begin{figure}
+			\includegraphics[width=0.3\linewidth]{data/part2/moved.jpg}
+			\caption{Amplitude grating after microscope shift}
+		\end{figure}
 	
+		We remove wire that blocks central maximum. After shifting microscope diffraction pattern appears, which is similar to pattern created by amplitude grating.
 		
 	\end{frame}
 	
 	
+	
+	\begin{frame}[plain,c]
+		
+		\begin{center}
+			\huge \usebeamercolor[fg]{frametitle} Conclusion
+		\end{center}
+		
+	\end{frame}
 
 	\begin{frame}
-		\frametitle{Acknowlegements}
+		\frametitle{Conclusion}
+		
+		Diffraction of light by ultrasonic waves has been demonstrated. Speed of ultrasonic waves in water was obtained using two methods:
+		$$ v = (1480 \pm 30) \text{ m/s -- from diffraction pattern,}$$
+		$$ v = (1574 \pm 12) \text{ m/s -- from dark-field method.}$$
+		
+		Bulk modulus $K$ according to (\ref{eq:k}) evaluates to:
+		$$ K = 2.2 \text{ GPa},$$
+		$$ K = 2.5 \text{ GPa}.$$
+		
+		Reference values:
+		$$ v = 1490 \text{ m/s},$$
+		$$ K = 2.2 \text{ GPa}. $$
 	\end{frame}
 	
+	\begin{frame}[plain,c]
+		
+		\begin{center}
+			\huge \usebeamercolor[fg]{frametitle} Thank you for your attention!
+		\end{center}
+		
+	\end{frame}
+			
 	
 \end{document}
