@@ -135,14 +135,6 @@
 	\end{frame}
 
 
-\begin{frame}
-	\frametitle{Experimental setup}
-	\begin{figure}
-		\centering
-		\includegraphics[width=1.1\linewidth]{res/experimental_setup.pdf}
-	\end{figure}
-
-\end{frame}
 
 \begin{frame}
 	\frametitle{Polarization of Laser Emission}
@@ -159,17 +151,123 @@
 			\end{figure}
 		\end{column}
 		\begin{column}{0.7\textwidth}
-			To remove reflections from laser's windows the Brewster's angle property can be used:
+			To remove reflections from laser's windows the Brewster's angle properties can be used:
 			$$r_p = \frac{E_r}{E_i} = \frac{n_2 \cos{\theta_i} - n_1 \cos{\theta_t}}{n_2 \cos{\theta_i} + n_1 \cos{\theta_t}}\bigg\rvert_{\theta_i = \theta_B} = 0$$
 		\end{column}
 	\end{columns}	
-	
+\end{frame}
 
+\begin{frame}
+	\frametitle{Malus' law}
+	\begin{columns}
+	\begin{column}{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1\linewidth]{res/malus_law.png}
+			\caption{Malus' law (here $\theta_i = \theta_1 - \theta_0$)}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.6\textwidth}
+		 To study the laser's polarization, polaroid and Malus' law is used:
+		 
+		 $$I(\theta_i) = I_0 \cos^2{\theta_i},$$
+		 
+		 where $I_0$ is the initial intensity and $\theta_i$ is the angle between the light's initial polarization direction and the axis of the polarizer.
+		 
+	\end{column}
+\end{columns}	
+
+
+\end{frame}
+
+
+\begin{frame}[plain,c]
+	
+	\begin{center}
+		\huge \usebeamercolor[fg]{frametitle} Measurements and Results
+	\end{center}
 	
 \end{frame}
 
 
-	\begin{frame}
+\begin{frame}
+	\frametitle{Experimental setup}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.1\linewidth]{res/experimental_setup.pdf}
+	\end{figure}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Experimental Setup}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{res/setup.png}
+		\caption{Photo of laboratory setup}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Laser Gain}
+	
+	
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{res/oscilloscope.png}
+				\caption{Phys-Lab 5.1: Oscilloscope, by Palto (screenshot)}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			Photodiodes are connected to the sound card with the ADC. This gives us a direct way to measure intensity. 
+			
+			$$G = \left(\frac{I^{\text{on}}_{1}}{I^{\text{off}}_{1}}\right)/\left(\frac{I^{\text{on}}_{2}}{I^{\text{off}}_{2}}\right),$$
+			
+			where $I_i^j$ -- r.m.s. light intensity.
+			
+			Series of measurments gives the following result:
+			$$G = 1.029 \pm 0.006$$
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Laser Polarization}
+	
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1.1\linewidth]{gen/cosine.pdf}
+				\caption{Intensity for different polaroid angles}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			Interpolating data series in the following form:
+			$$I(\theta) = A \cos^2{(\Omega \theta + \theta_0)},$$
+			We obtain the following parameters' values: 
+			
+			\begin{itemize}
+				\item[] $\Omega = 0.998 \pm 0.005$
+				\item[] $\theta_0 = (-70 \pm 1)^\circ$
+			\end{itemize}
+		
+		This demonstrates that Malus's law holds with a great precision.
+		\end{column}
+	\end{columns}
+	
+	
+\end{frame}
+
+
+
+\begin{frame}
 	\frametitle{Gain}
 	The fact that the number of spontaneously emitted photons does not depend on  $\rho(\omega)$ gives us a reason to neglect $\left(\frac{dN_0}{dt}\right)_{\text{spon}}$ term. Number of 
 	
@@ -206,7 +304,7 @@
 			
 		\end{column}
 		\begin{column}{0.4\textwidth}
-		mirror alignment screws
+		Phys-Lab 5.1: Oscilloscope, by Palto (screenshot)
 		\end{column}
 	\end{columns}
 \end{frame}
