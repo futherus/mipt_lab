@@ -77,7 +77,7 @@
 	\end{frame}
 
 	\begin{frame}
-	\frametitle{Gain}
+	\frametitle{Laser Gain}
 	
 	\begin{figure}
 		\centering
@@ -218,8 +218,10 @@
 		\end{column}
 		\begin{column}{0.6\textwidth}
 			 To study the laser's polarization, polaroid and Malus' law is used:
-			 
-			 $$I(\theta_i) = I_0 \cos^2{\theta_i},$$
+			 \begin{equation}
+				 I(\theta_i) = I_0 \cos^2{\theta_i},
+				 \label{eq:malus}
+			 \end{equation}
 			 
 			 where $I_0$ is the initial intensity and $\theta_i$ is the angle between the light's initial polarization direction and the axis of the polarizer.
 			 
@@ -258,8 +260,24 @@
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Laser Gain}
+		\frametitle{Adjustment}
+		\begin{columns}
+			\column{0.5\linewidth}
+			\begin{figure}
+				\includegraphics[width=4cm]{data/beam.jpg}
+				\caption{Image of laser beam after laser tube}
+			\end{figure}
+			\column{0.5\linewidth}
+			Laser gain is measured with additional laser and a pair of photodiodes. We need laser beam to pass through laser tube without dissipation on tube walls.
+		\end{columns}
 		
+		To achieve laser generation we need fine adjustment of front and back mirrors of laser. Additional laser is used for that purpose. We adjust back mirror until reflection of alignment laser appears over it's output window. The same procedure applies to the front mirror.
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Laser Gain}
+		Laser gain is measured using two photodiodes, connected to sound card. To exclude the influence of photodiodes dark current and ambient illumination we use modulator. Therefore, we can measure AC. Intensities are measured with and without amplification ($I_i^{\text{on}}$ and $I_i^{\text{off}}$).
 		
 		\begin{columns}
 			\begin{column}{0.4\textwidth}
@@ -282,11 +300,12 @@
 		\end{columns}
 		
 	\end{frame}
-	
+		
 	
 	\begin{frame}
 		\frametitle{Laser Polarization}
-		
+		When laser generation is active we can measure polarization. Polarization is measured using single photodiode and normalized.
+		\vspace{-20pt}
 		\begin{columns}
 			\begin{column}{0.6\textwidth}
 				\begin{figure}
@@ -296,7 +315,7 @@
 				\end{figure}
 			\end{column}
 			\begin{column}{0.4\textwidth}
-				Interpolating data series in the following form:
+				Interpolating according to (\ref{eq:malus}):
 				$$I(\theta) = A \cos^2{(\Omega \theta + \theta_0)},$$
 				We obtain the following parameters' values: 
 				
