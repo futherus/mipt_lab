@@ -45,9 +45,20 @@
 	
 	\begin{frame}
 		\frametitle{Abstract}
-		TODO
+		
+		Article studies He-Ne laser and it's basic principle of operation. Laser gain is measured. Feasibility of Malus' law is demonstrated. Mode structure of laser is examined.
 
 	\end{frame}
+
+
+	\begin{frame}[plain,c]
+		
+		\begin{center}
+			\huge \usebeamercolor[fg]{frametitle} Introduction and Theory
+		\end{center}
+	
+	\end{frame}
+	
 	
 	\begin{frame}
 		\frametitle{Elementary processes}
@@ -69,8 +80,8 @@
 			\includegraphics[height=3cm]{res/emission_types_3.jpg}
 			$$\left(\frac{dN_0}{dt}\right)_{\text{spon}} = - A_{10} N_1$$
 			photons radiate independently in all directions. $\frac{dN_0}{dt}$ \textbf{does not} depend on $\rho(\omega)$.
-		
 		\end{columns}
+		
 		\vspace{10pt}
 		\footnotesize
 		Where $\rho(\omega)$ -- spectral energy density of the isotropic radiation field at the frequency of the transition.
@@ -112,6 +123,24 @@
 		\vspace*{20px}
 		\centering
 		$\gamma$ is positive if $N_1 > N_0$. This laser principle is called \textbf{population inversion}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{He-Ne medium}
+
+		Laser tube is filled with mixture of 10:1 ratio of helium and neon at pressure $P \approx 10^2$ Pa. Under this conditions, high-voltage electrical discharge is easily created. Electrical discharge is a pump source of He-Ne laser.
+		
+		\begin{columns}
+			\column{0.6\linewidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{res/hene_levels.png}
+				\caption{Energy levels}
+			\end{figure}
+			\column{0.4\linewidth}
+			Electron-helium collisions excite helium atoms. In He-Ne collisions occurs very efficient transfer of excitation energy to Ne atoms. Collisions of neon with tube walls removes excitement energy of metastable $3s$ level.
+		\end{columns}
+		
+		He-Ne laser gives wavelengths in three narrow bands: at $632.8$ nm, $1.15 \; \mu\text{m}$ and $3.39 \; \mu\text{m}$.
 	\end{frame}
 
 	\begin{frame}
@@ -181,9 +210,10 @@
 	
 		In generation spectrum, created by medium, resonator spectrum cuts off a few frequencies.
 		
-		Estimating maximal number of modes:
+		Estimating maximal number of longitudinal modes:
 		$$ N_m = \omega_D / \omega_n \approx 10.$$
 	\end{frame}
+
 	\begin{frame}
 		\frametitle{Transverse modes}
 		\footnotesize
@@ -233,7 +263,7 @@
 			\end{column}
 		\end{columns}	
 		
-		\end{frame}
+	\end{frame}
 	
 	
 		\begin{frame}
@@ -375,7 +405,7 @@
 					\item[] $\theta_0 = (-70 \pm 1)^\circ$
 				\end{itemize}
 			
-			This demonstrates that Malus's law holds with a great precision.
+			This demonstrates that Malus' law holds with a great precision.
 			\end{column}
 		\end{columns}
 		
@@ -438,7 +468,7 @@
 			\begin{column}{0.3\textwidth}
 				\begin{figure}
 					\centering
-					\includegraphics[width=1\linewidth]{res/tem_highmode.png}
+					\includegraphics[width=1.2\linewidth]{res/tem_highmode.png}
 					\vspace{-10pt}
 					\caption{\footnotesize Large number of modes}
 				\end{figure}
@@ -448,11 +478,11 @@
 		\vspace{-10pt}
 		
 		\begin{columns}
-			\begin{column}{0.32\textwidth}
+			\begin{column}{0.4\textwidth}
 				\begin{figure}
 					\centering
-					\includegraphics[width=0.8\linewidth]{res/tem_strange_2.png}
-					\caption{\footnotesize$TEM-clover$ }
+					\includegraphics[width=0.7\linewidth]{res/tem_strange_2.png}
+					\caption{\footnotesize$TEM-"clover"$ }
 				\end{figure}
 			\end{column}
 			\begin{column}{0.3\textwidth}
@@ -462,7 +492,31 @@
 					\caption{\footnotesize $TEM$}
 				\end{figure}
 			\end{column}
-		\end{columns}	
+		\end{columns}		
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Conclusion}
+		
+		Laser generation was achieved.
+		Laser gain evaluated to:
+		$$ G = 1.029 \pm 0.006.$$
+		
+		Malus' law was demonstrated to hold (\ref{eq:malus}):
+		\begin{itemize}
+			\centering
+			\item[] $\Omega = 0.998 \pm 0.005$
+			\item[] $\theta_0 = (-70 \pm 1)^\circ$
+		\end{itemize}
+	
+	\end{frame}
+	
+	\begin{frame}[plain,c]
+		
+		\begin{center}
+			\huge \usebeamercolor[fg]{frametitle} Thank you for your attention!
+		\end{center}
+		
 	\end{frame}
 	
 \end{document}
