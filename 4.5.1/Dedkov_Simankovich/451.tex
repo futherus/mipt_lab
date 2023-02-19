@@ -184,26 +184,77 @@
 		Estimating maximal number of modes:
 		$$ N_m = \omega_D / \omega_n \approx 10.$$
 	\end{frame}
-
 	\begin{frame}
-		\frametitle{Polarization of Laser Emission}
-		\begin{figure}
-			\centering
-			\includegraphics[width=1\linewidth]{res/brewster_setup.pdf}
-		\end{figure}
+		\frametitle{Transverse modes}
+		\footnotesize
 		
+		It might seem
+		reasonable that very large number of transverse
+		modes would be excited. This is not true
+		because the diffraction loss becomes very large for
+		high transverse mode numbers.
+		It is possible to obtain different transverse mode patterns by proper
+		choice of mirror alignment.
+		\vspace{-10pt}
 		\begin{columns}
-			\begin{column}{0.3\textwidth}
+			\footnotesize
+			\begin{column}{0.4\textwidth}
 				\begin{figure}
+					\footnotesize
 					\centering
-					\includegraphics[width=1\linewidth]{res/brewsters-angle.svg}
+					\includegraphics[width=1\linewidth]{res/tem_directions.png}
+					\vspace{-5pt}
+					\footnotesize
+					\caption{\footnotesize Propagation directions of modes with different transverse indices}
 				\end{figure}
 			\end{column}
-			\begin{column}{0.7\textwidth}
-				To remove reflections from laser's windows the Brewster's angle properties can be used:
-				$$r_p = \frac{E_r}{E_i} = \frac{n_2 \cos{\theta_i} - n_1 \cos{\theta_t}}{n_2 \cos{\theta_i} + n_1 \cos{\theta_t}}\bigg\rvert_{\theta_i = \theta_B} = 0$$
+			\begin{column}{0.4\textwidth}
+				\begin{figure}
+					
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem_intensity.png}		\vspace{-13pt}
+					
+					\caption{\footnotesize Distribution of laser radiation intensity on resonator mirror}
+				\end{figure}
+			\end{column}
+		\end{columns}			
+		
+		\vspace{-10pt}
+		
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem_patterns.png}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.4\textwidth}
+				Theory of such distribution is complicated. \footnote{\;"Laser modes", B. F. Hochheimer and J. T. Massey.}
 			\end{column}
 		\end{columns}	
+		
+		\end{frame}
+	
+	
+		\begin{frame}
+			\frametitle{Polarization of Laser Emission}
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\linewidth]{res/brewster_setup.pdf}
+			\end{figure}
+			
+			\begin{columns}
+				\begin{column}{0.3\textwidth}
+					\begin{figure}
+						\centering
+						\includegraphics[width=1\linewidth]{res/brewsters-angle.svg}
+					\end{figure}
+				\end{column}
+				\begin{column}{0.7\textwidth}
+					To remove reflections from laser's windows the Brewster's angle properties can be used:
+					$$r_p = \frac{E_r}{E_i} = \frac{n_2 \cos{\theta_i} - n_1 \cos{\theta_t}}{n_2 \cos{\theta_i} + n_1 \cos{\theta_t}}\bigg\rvert_{\theta_i = \theta_B} = 0$$
+				\end{column}
+			\end{columns}	
 	\end{frame}
 	
 	\begin{frame}
@@ -330,38 +381,88 @@
 		
 		
 	\end{frame}
-	
-	
+		\begin{frame}
+		\frametitle{Transverse modes}
+		\begin{columns}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem00.png}
+					\vspace{-10pt}
+					\caption{\footnotesize  $TEM_{00q}$}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem01.png}
+					\vspace{-10pt}
+					\caption{\footnotesize  $TEM_{01q}$}
+				\end{figure}
+			\end{column}
+		\end{columns}	
+		
+		\vspace{-10pt}
+		
+		\begin{columns}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem02.png}
+					\vspace{-10pt}
+					\caption{\footnotesize  $TEM_{02q}$}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem03.png}
+					\vspace{-10pt}
+					\caption{\footnotesize $TEM_{03q}$}
+				\end{figure}
+			\end{column}
+		\end{columns}	
+	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Gain}
-		The fact that the number of spontaneously emitted photons does not depend on  $\rho(\omega)$ gives us a reason to neglect $\left(\frac{dN_0}{dt}\right)_{\text{spon}}$ term. Number of 
+		\frametitle{Non-trivial transverse modes}
+		\begin{columns}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem30.png}
+					\vspace{-10pt}
+					\caption{\footnotesize  $TEM_{30q}$}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{res/tem_highmode.png}
+					\vspace{-10pt}
+					\caption{\footnotesize Large number of modes}
+				\end{figure}
+			\end{column}
+		\end{columns}	
 		
-		1. laser tube
+		\vspace{-10pt}
 		
-		laser power supply
-		
-		4. back mirror
-		
-		3. front mirror
-		
-		sound card
-		
-		2. translucent mirror
-		
-		6. photodiode 1
-		
-		11. photodiode 2
-		
-		7. modulator
-		
-		screen
-		
-		10. alignment laser
-		Brewster's angle
-	
-	
-	
+		\begin{columns}
+			\begin{column}{0.32\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=0.8\linewidth]{res/tem_strange_2.png}
+					\caption{\footnotesize$TEM-clover$ }
+				\end{figure}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=0.8\linewidth]{res/tem_strange_1.png}
+					\caption{\footnotesize $TEM$}
+				\end{figure}
+			\end{column}
+		\end{columns}	
 	\end{frame}
 	
 \end{document}
