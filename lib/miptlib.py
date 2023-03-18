@@ -63,7 +63,7 @@ def excel_cols2nums(cols):
 
     return indices
 
-def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
+def read_excel(filename, usecols, header = None, nrows = None, sheet_name = 0):
     '''
     Creates pandas.DataFrame from excel file with pandas.MultiIndex.
 
@@ -75,7 +75,7 @@ def read_excel(filename, usecols, header, nrows = None, sheet_name = 0):
     usecols = excel_cols2nums(list(usecols))
 
     if header == None or header == 0:
-        return pd.read_excel(filename, header = header, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
+        return pd.read_excel(filename, usecols = usecols, nrows = nrows, sheet_name = sheet_name)
 
     # Read header rows
     __header_df = pd.read_excel(filename, nrows = 0, header = header, sheet_name = sheet_name)
