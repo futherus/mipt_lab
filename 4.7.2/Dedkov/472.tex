@@ -47,10 +47,9 @@
 
 \begin{frame}
 	\frametitle{Abstract}
-	TODO
-Adjusting screw Scatter plate Analyzer Screen Laser
-Oscilloscope EMF source Photodiode
-$$r_0 \;\; r_1\;\; r_2\;\; ...r_m$$
+	
+	Laboratory work describes birefringence and Pockels effect on $\text{LiNbO}_3$ crystal. Interference patterns are examined. Difference of refractive indices $n_e - n_o$ and characteristic value of $U_{\lambda/2}$ are estimated.
+	
 \end{frame}
 
 \begin{frame}
@@ -137,6 +136,43 @@ $$r_0 \;\; r_1\;\; r_2\;\; ...r_m$$
 	
 	where $L$ -- distance from crystal to the screen.
 \end{frame}
+
+\begin{frame}
+	\frametitle{Pockels effect}
+	
+	\begin{columns}
+		\begin{column}{0.5\linewidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{res/pockels}
+				\caption{Biaxial structure of crystal}
+			\end{figure}
+			
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			Applying voltage to crystal of LiNbO$_3$ converts it from uniaxial to biaxial.
+			Biaxial crystal has 'fast' ($n_0 - \Delta n$) and 'slow' ($n_0 + \Delta n$) axes.
+			
+		\end{column}
+	\end{columns}
+	\footnotesize
+	Phase shift of $E_{\xi}$ and $E_{\eta}$:
+	$$ \Delta \varphi = \frac{4\pi}{\lambda} \frac{l}{d} AU,$$
+	where $l, \; d$ -- crystal length, width, $A$ -- constant for crystal.
+	Decomposing light electric field to $E_{\xi}$ and $E_{\eta}$, evaluating phase shift and projecting on $X$-axis we get:
+	$$ E_{\text{out}} = E_0 e^{\omega t - k l} \sin\left(\frac{\Delta \varphi}{2}\right) \qquad I_{\text{out}} = I_0 \sin^2\left(\frac{\pi}{2}\frac{U}{U_{\lambda/2}}\right).$$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Experimental setup}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{res/pockels_scheme}
+		\caption{Experimental setup for observing the Pockels effect}
+	\end{figure}
+
+\end{frame}
 	
 \begin{frame}[plain,c]	
 	\begin{center}
@@ -163,6 +199,7 @@ $$r_0 \;\; r_1\;\; r_2\;\; ...r_m$$
 		\caption{\footnotesize  Dark (left) and light (right) "maltese cross" patterns. When the polarizer is rotated by 90 degrees, the cross pattern changes to a bright cross on a dark background. }
 	\end{figure}
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{Dark rings}
@@ -248,8 +285,8 @@ $$\Delta n = n_o - n_e = \frac{\lambda}{l} \frac{(n_o L)^2}{\frac{\partial r^2_m
 	Investigated the interference of scattered light passing through the crystal.
 	Determined birefringence difference:
 	
-	 $$\Delta n = (0.098 \pm 0.004) \; (\text{reference value}\;\; n_o - n_e = 0.10).$$
-	
+	 $$\Delta n = (0.098 \pm 0.004) \; .$$
+	 $$\text{reference value for} \;\lambda = 0.63 \; \mu m\;\; n_o - n_e = 0.08 \div 0.11$$
 	 Observed the change in the nature of the polarization of light when an electric field was applied to a crystal. Estimated half-wave voltage:
 	 $$U_{\lambda/2} = (0.45 \pm 0.06) \;\text{kV}$$
 	
