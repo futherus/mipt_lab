@@ -3,6 +3,10 @@
 *.out
 *.synctex.gz
 *.ipynb_checkpoints
+*.nav
+*.snm
+*.toc
+
 __pycache__
 __pycache__/**
 gen/
