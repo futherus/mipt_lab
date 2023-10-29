@@ -17,7 +17,6 @@ def errcalc(func, at, delta):
     :param delta: errors of arguments
 
     Example:
-        
         def func(x):
             return x[1]**2 + x[0]
 
@@ -25,14 +24,13 @@ def errcalc(func, at, delta):
     '''
     __at = np.column_stack(at)
     __delta = np.column_stack(delta)
-    
 
     assert __delta.shape[1] == __at.shape[1], 'Errors and point must have the same length'
     __dim = __delta.shape[1]
-    
+
     __delta = np.eye(__dim) * __delta[:, np.newaxis, :]
     __at = np.ones((__dim, __dim)) * __at[:, np.newaxis, :]
-    
+
     __gradient = (np.apply_along_axis(func, 2, __at + __delta) - \
                   np.apply_along_axis(func, 2, __at - __delta)) / 2
 
@@ -135,11 +133,11 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
 
     :return x_clean, y_clean: pd.Series of values used for approximating line
     '''
-    
+
     assert len(x) == len(y), "x and y must have same length"
-    
+
     end = (len(x) - 1) if (end == None) else end
-    
+
     x_clean = []
     y_clean = []
     for i in range(begin, end + 1):
@@ -149,15 +147,15 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
             continue
         x_clean.append(x[i])
         y_clean.append(y[i])
-    
+
     x_min = min(x_clean) if (x_min == None) else x_min
     x_max = max(x_clean) if (x_max == None) else x_max
 
     x_space = np.linspace(x_min, x_max, 100)
-    
+
     if unique_marker == True:
         unique_marker = next(PLOT_MARKER)
-    
+
     equ = None
     p = None
     # At least two points and function for approximating.
@@ -178,11 +176,11 @@ def plot(x, y, label = None, color = None, xerr = 0, yerr = 0,
 
 def rename(columns, fmt, inplace = False):
     __init_columns = columns
-    __columns = __init_columns 
-    
+    __columns = __init_columns
+
     for key in fmt.keys():
         __renamed = []
-        
+
         for i in range(len(__init_columns)):
             col = __columns[i]
 
@@ -196,11 +194,11 @@ def rename(columns, fmt, inplace = False):
                     col = (fmt[key],) + __columns[i][1:]
             else:
                 assert 0, 'Format index must be str or tuple'
-                
-            __renamed.append(col) 
-        
+
+            __renamed.append(col)
+
         __columns = __renamed
-                    
+
     return __columns #pd.Index(__columns, tupleize_cols = True)
 
 class table:
@@ -217,7 +215,7 @@ class table:
     def __init__(self, data, fmt = {}):
         self.data = data
         self.latex_fmt = fmt
-        
+
     def get_names(self):
         __fmt = self.latex_fmt
         return {__i:__fmt[__i][0] for __i in __fmt.keys() if len(__fmt[__i]) > 0}
@@ -232,10 +230,10 @@ class table:
 
     def get_fmt(self):
         return self.latex_fmt
-    
+
     def get_data(self):
         return self.data
-    
+
     def set_name(self, key, name):
         if key in self.latex_fmt:
             __tmp = self.latex_fmt[key]
@@ -251,66 +249,67 @@ class table:
             __tmp[1] = precision
         else:
             __tmp = [DEFAULT_NAME, precision]
-        
+
         self.latex_fmt[key] = __tmp
 
     def set_fmt(self, fmt):
         self.latex_fmt = fmt
-    
+
     def scale(self):
         __tab = table(self.data.copy(), self.latex_fmt.copy())
-        
+
         __scales = self.get_scales()
         for key in list(__scales.keys()):
-            if key in list(__tab.data.columns.values):
+            if (key in list(__tab.data.columns.values)):
                 __tab.data[key] *= 10**(__scales[key])
 
         return __tab
-    
+
     def rename(self):
         __tab = table(self.data.copy(), self.latex_fmt.copy())
-        
+
         __tab.data.columns = pd.Index(rename(__tab.data.columns.values, __tab.get_names()), tupleize_cols = True)
         __tab.latex_fmt = dict(zip(rename(list(__tab.latex_fmt.keys()), __tab.get_names()), list(__tab.latex_fmt.values())))
-            
-        return __tab  
-        
+
+        return __tab
+
     def insert(self, loc, column, value, fmt = []):
         assert not (column in self.data), "Column " + str(column) + " already exists"
         self.data.insert(loc = loc, column = column, value = value, allow_duplicates = False)
-        
+
         if fmt:
             self.latex_fmt[column] = fmt
-        
+
     def delete(self, column):
         assert (column in self.data), "Column " + str(column) + " does not exist"
         del self.data[column]
-            
-    def to_latex(self, file = None):
+
+    def to_latex(self, file = None, na_rep = 'NaN'):
         '''
         Applies LaTeX formatting and saves table to file.
-        
+
         :param filename: output file
-        
+        :param na_rep:   replacement of nan values in table
+
         Example:
-        
+
         fmt = {
             'x': ['$x$, дел.',   '{:.1f}'],
             'x0': ['$x_0$, дел.', '{:.3f}'],
-            
+
             # It supports multi index renaming
-            ('RC', 'R'): ['$R$, дел.',   '{:.2f}'], 
+            ('RC', 'R'): ['$R$, дел.',   '{:.2f}'],
         }
-        
+
         my_table.to_latex('my_table.tex')
         '''
-        
-        # Rename also changes latex_fmt. 
+
+        # Rename also changes latex_fmt.
         # That is why we need to assign rename() to local variable
-        __tab = self.rename() 
-        return __tab.scale().data.style.format(__tab.get_precisions()) \
-                    .hide(level=0, axis=0)                                 \
-                    .to_latex( 
+        __tab = self.rename()
+        return __tab.scale().data.style.format(__tab.get_precisions(), na_rep = na_rep)     \
+                    .hide(level=0, axis=0)                                                  \
+                    .to_latex(
                         buf = file,
                         column_format="c" * len(__tab.data.columns.values),
                         hrules=True,
@@ -331,15 +330,15 @@ def mnk(x, y, fmt = None, file = None, precision = 2):
                 'b':      ['$b$',            '{:.' + str(precision) + 'f}'],
                 'db':     ['$\Delta b$',     '{:.' + str(precision) + 'f}'],
         }
-    
+
     __sx = (x**2).mean() - (x.mean())**2
     __sy = (y**2).mean() - (y.mean())**2
-    
+
     __rxy = (y*x).mean() - (y.mean() * x.mean())
-    
+
     __a  = __rxy / __sx
     __da = (1/(len(x) - 2) * (__sy/__sx - __a**2))**(0.5)
-    
+
     __b  = y.mean() - __a * x.mean()
     __db = __da*(__sx + (x.mean())**2)**(1/2)
 
@@ -354,9 +353,9 @@ def mnk(x, y, fmt = None, file = None, precision = 2):
         'b':     [__b],
         'db':    [__db],
     })
-    
+
     __tab = table(__data, fmt)
     if file:
         __tab.to_latex(file)
-    
+
     return __tab
